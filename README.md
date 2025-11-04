@@ -8,6 +8,8 @@ Natural language search for screenshots using OCR text extraction and visual des
 - **Visual Descriptions**: Generates semantic descriptions of screenshot content using BLIP-2
 - **Natural Language Search**: Search using queries like "error message about auth" or "screenshot with blue button"
 - **Confidence Scores**: Returns top 5 matches with similarity confidence scores
+- **Web Interface**: Interactive Streamlit UI for visual search experience
+- **CLI Interface**: Command-line tool for scripting and automation
 - **100% Open Source**: Uses only open source models (no API keys required)
 
 ## Architecture
@@ -19,6 +21,7 @@ Natural language search for screenshots using OCR text extraction and visual des
 - **Embeddings**: sentence-transformers (all-MiniLM-L6-v2 for semantic search)
 - **Search**: Cosine similarity with numpy
 - **Storage**: JSON metadata + numpy arrays
+- **UI**: Streamlit (interactive web interface)
 
 ### How It Works
 
@@ -72,6 +75,8 @@ This creates an index directory with:
 
 ### 2. Search Screenshots
 
+#### CLI Search
+
 Search with natural language queries:
 
 ```bash
@@ -83,6 +88,21 @@ With custom index directory and result count:
 ```bash
 python main.py search "blue button" --index-dir my_index --top-k 10
 ```
+
+#### Web Interface
+
+Launch the Streamlit web app:
+
+```bash
+streamlit run app.py
+```
+
+This opens an interactive browser interface where you can:
+- Enter natural language queries
+- View search results with image previews
+- See confidence scores and metadata
+- Expand OCR text and visual descriptions
+- Configure index directory and number of results
 
 ### Example Queries
 
@@ -111,6 +131,7 @@ Result 1:
 ```
 screenshot_search/
 ├── main.py           # CLI interface
+├── app.py            # Streamlit web interface
 ├── indexer.py        # Screenshot indexing (OCR + visual descriptions)
 ├── searcher.py       # Semantic search functionality
 ├── requirements.txt  # Python dependencies
@@ -138,5 +159,5 @@ screenshot_search/
 - Incremental indexing for new screenshots
 - Multi-language OCR support
 - Vector database integration for larger datasets
-- Web interface
 - Batch processing optimization
+- Advanced filtering options (date, file type, etc.)
