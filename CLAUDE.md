@@ -1,6 +1,6 @@
 # Python setup
-- Use python3 -m venv venv to create virtual environments
-- To enter the virtual environment use source/venv/bin/activate
+- Use `UV_NATIVE_TLS=1 uv sync` to install dependencies (native TLS needed for corporate proxy)
+- Use `uv run <command>` to run commands in the virtual environment
 
 # Code style
 - Use functional programming where possible
